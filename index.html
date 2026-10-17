@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
+    <script>
+        // Your JavaScript code here
+    </script>
+</head>
+<body>
+
+    <h1>Login Page</h1>
+
+ 
+</body>
+</html>
+
+        }
+    </style>
+    <script>
+        function validateForm() {
+            // Clear any previous error messages
+            clearErrorMessages();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            let isValid = true;
+
+            // Validate username
+            if (username.length <= 1) {
+                document.getElementById('usernameError').textContent = 'User name should be more than one letter';
+                document.getElementById('usernameError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate email (you can add more robust email validation if needed)
+            if (!email.includes('@')) {
+                document.getElementById('emailError').textContent = 'Invalid email address';
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate password
+            if (!/[A-Z]/.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password should have at least one capital letter.';
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!/\d/.test(password)) {
+                document.getElementById('passwordError').textContent = 'The password should have at least one number';
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Check if all fields are filled
+            if (!username || !email || !password) {
+                alert('All fields are required');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function clearErrorMessages() {
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(function (element) {
+                element.textContent = '';
+                element.style.display = 'none';
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <form onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <div id="usernameError" class="error"></div>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <div id="emailError" class="error"></div>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <div id="passwordError" class="error"></div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
